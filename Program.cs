@@ -116,8 +116,68 @@ namespace linq {
                 49,
                 96
             };
-            Console.WriteLine($"{numbers3.Count()}");
-        }
+            Console.WriteLine ($"{numbers3.Count()}");
+            Console.WriteLine ("        ");
+            // How much money have we made?
+            List<double> purchases = new List<double> () {
+                2340.29,
+                745.31,
+                21.76,
+                34.03,
+                4786.45,
+                879.45,
+                9442.85,
+                2454.63,
+                45.65
+            };
+            Console.WriteLine ($"The total of our numbers is {purchases.Sum()}");
+            Console.WriteLine ("        ");
+            // What is our most expensive product?
+            List<double> prices = new List<double> () {
+                879.45,
+                9442.85,
+                2454.63,
+                45.65,
+                2340.29,
+                34.03,
+                4786.45,
+                745.31,
+                21.76
+            };
+            Console.WriteLine ($"Our largest number is {prices.Max()}");
+            Console.WriteLine ("        ");
 
+            /*
+    Store each number in the following List until a perfect square
+    is detected.
+
+    Ref: https://msdn.microsoft.com/en-us/library/system.math.sqrt(v=vs.110).aspx
+*/
+            List<int> wheresSquaredo = new List<int> () {
+                66,
+                12,
+                8,
+                27,
+                82,
+                34,
+                7,
+                50,
+                19,
+                46,
+                81,
+                23,
+                30,
+                4,
+                68,
+                14
+            };
+            // Here we're using TakeWhile to snag the numbers in our list and put them in a new list. We're giving it the instructions to take numbers until our boolean is true. We set our boolean to false, and it's saying ' hey, run through these numbers, slap em in a new list WHILE they are NOT perfect squares'. So when we hit a perfect square, that boolean is now a true value and we stop storing our numbers in notPerfect.
+            List<int> notPerfect = wheresSquaredo.TakeWhile(n => Math.Sqrt(n) * Math.Sqrt(n) != n).ToList();
+
+            foreach(int number in notPerfect) {
+                Console.WriteLine($"{number}");
+            }
+
+        }
     }
 }
